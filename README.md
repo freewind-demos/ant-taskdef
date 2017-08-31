@@ -27,3 +27,9 @@ hello:
 BUILD SUCCESSFUL
 Total time: 0 seconds
 ```
+
+If you want to see verbose message, use:
+
+```
+ant -verbose
+```
