@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<project name="ant-demo" default="hello">
+	<target name="hello">
+		<echo message="Hello ant!" />
+	</target>
+</project>
