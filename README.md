@@ -1,5 +1,7 @@
-Ant Demo
-========
+Ant Custom Task Demo
+====================
+
+Create custom tasks used in build.xml.
 
 ```
 brew install ant
@@ -14,22 +16,7 @@ ant
 or
 
 ```
-ant hello
-```
-
-You will see:
-
-```
-
-hello:
-     [echo] Hello ant!
-
-BUILD SUCCESSFUL
-Total time: 0 seconds
-```
-
-If you want to see verbose message, use:
-
-```
-ant -verbose
+ant run-simple-task
+ant run-complex-task
+ant run-custom-ant-task
 ```

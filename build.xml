@@ -1,6 +1,37 @@
 <?xml version="1.0" ?>
-<project name="ant-demo" default="hello">
-	<target name="hello">
-		<echo message="Hello ant!" />
+<project name="ant-demo" basedir="." default="all">
+	<target name="init">
+		<delete dir="${basedir}/build" />
+		<mkdir dir="${basedir}/build" />
+		<mkdir dir="${basedir}/build/classes" />
 	</target>
+
+	<target name="prepare" depends="init">
+		<javac srcdir="${basedir}/src" destdir="${basedir}/build/classes" />
+		<jar basedir="${basedir}/build/classes"
+			destfile="${basedir}/build/tasks.jar"  />
+	</target>
+
+	<target name="run-simple-task" depends="prepare">
+		<taskdef name="simple-task" classname="SimpleTask" classpath="${basedir}/build/tasks.jar" />
+		<simple-task />
+	</target>
+
+	<target name="run-complex-task" depends="prepare">
+		<taskdef name="complex-task" classname="ComplexTask" classpath="${basedir}/build/tasks.jar" />
+		<complex-task message="very complex">
+			inner text1
+			<command content="first command" />
+			<command content="second command" />
+			inner text2
+		</complex-task>
+	</target>
+
+	<target name="run-custom-ant-task" depends="prepare">
+		<taskdef name="custom-ant-task" classname="CustomAntTask" classpath="${basedir}/build/tasks.jar" />
+		<custom-ant-task />
+	</target>
+
+	<target name="all" depends="run-simple-task, run-complex-task, run-custom-ant-task" />
+
 </project>
